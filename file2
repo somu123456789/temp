@@ -1,0 +1,4 @@
+Line1\nline2\nline3\line4 > file2
+echo Line1nline2nline3line4 > file2
+echo Line1nline2nline3line4
+Line1\nline2\nline3\line4
