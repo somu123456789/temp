@@ -108,3 +108,124 @@ cat /etc/shells
 bash
 su -ubuntu
 su - ubuntu
+ls
+which git
+git --version
+git global
+git config --global --list
+git init
+ls
+ls -la
+git config --global user.name "somu"
+git config --global user.emali "somu4u1234@gmail.com"
+git config --global --list
+git remote add origin https://github.com/somu123456789/practice.git
+git branch -M main
+git branch
+git push origin main
+git remote add origin https://github.com/somu123456789/practice.git
+git branch -M main
+git push -u origin main
+echo "# practice" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/somu123456789/practice.git
+git push -u origin main
+ls
+cat > file6
+cat file6
+rm file6
+cat > file6
+cat file6
+git add file6
+git status
+git add .
+git status
+git commit -m "firstcommit"
+git status
+git log
+git log --oneline
+git push origin main
+git config --global --list
+git branch
+git remote add origin https://github.com/somu123456789/practice.git
+git branch -M main
+git push -u origin main
+git config --global --unset user.name
+git config --global --unset user.email
+git config user.name "somu"
+git config user.email "somu4u1234@gmail.com"
+git remote add origin https://github.com/somu123456789/practice.git
+git branch -M main
+git push -u origin main
+git config --global --list
+git branch
+git push origin main
+git remote add origin https://github.com/somu123456789/practice.git
+git config --global --unset user.emali
+git config --global user.name "somu"
+git config --global user.email "somu4u1234@gmail.com"
+git config --global --list
+git remote -v
+git push -u origin main
+git config --global --unset credential.helper
+git config --global user.name "somu"
+git config --global user.email "somu4u1234@gmail.com"
+git push -u origin main
+git remote add origin https://github.com/somu123456789/practice.git
+git branch -M main
+git push -u origin main
+git config --global --list
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global --list
+git staus
+git status
+git config --global user.name "somu"
+git config --global user.email "somu4u1234@gmail.com"
+git remote add https://github.com/somu123456789/DEVOPS.git
+git remote add origin https://github.com/somu123456789/DEVOPS.git
+git remote -v
+git remote remove origin https://github.com/somu123456789/practice.git
+git remote -v
+git remote remove origin https://github.com/somu123456789/practice.git
+git remote -v
+git remote add origin https://github.com/somu123456789/DEVOPS.git
+git remote remove origin
+git remote -v
+git remote add origin https://github.com/somu123456789/DEVOPS.git
+git push origin main
+git config --global --list
+git remote -v
+git remote remove origin
+git remote -v
+echo "# practice" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/somu123456789/practice.git
+git push -u origin main
+git branch
+git ls -files
+git ls-files
+ls
+hostnamectl
+hostnamectl set_hostname server1
+vi hostnamectl
+set_hostname
+ls
+git pull origin main
+ls
+hostnamectl set_hostname server1
+hostnamectl set-hostname server1
+hostname
+history
+hostname
+cat server1
+cd server1
+bash'
+ls
+
