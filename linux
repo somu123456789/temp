@@ -1,0 +1,487 @@
+LIST COMMANDS
+
+ls ==> list the files and directories
+ls -a ==> to view the hidden file and directories
+ls –l ==> listing files and directories in long list format
+ls –lt ==> recently modified files will show above
+ls –lrt ==> recently modified files will show bottom
+total in ls –lrt ==> disk usage of listed files ( sequence - permissions, linkcount, owner, group, filesize,
+modifieddate, filename)
+
+pwd ==> present working directory
+
+touch filename ==> to create file ex: touch vkm --- vkm named file is created
+touch dir1/file1 ==> file1 created inside the directory dir1
+touch {vkm1,vkm2} ==> to create multiple files at a time
+touch .file ==> to create hidden file
+mkdir directoryname ==> to create directory ex: mkdir temp -- temp named directory is created
+mkdir {temp1,temp2} ==> to create multiple directories in a single lane
+mkdir -p dir1/dir2/dir3 ==> to create multiple subdirectories (here dir1 is parent directory)
+
+VISUAL EDITOR(vi)
+
+vi vkm  ==> to edit the file
+esc :wq! ==> to save the edited file and force quit
+esc :q! ==>the edited content will not be saved
+%s/string1/string2/g  ==> string1 will be replaced by string2 in all the lines
+1,3s/s/string1/string2/g ==> string1 will be replaced by string2 in first 3 lines
+$s/string1/string2/g ==> string1 will be replaced by string2 in last line
+1s/string1/string2/1 ==> the very first string1 will be replaced by string2 in first line
+esc :line number ==> ex: esc :4 cursor will move to the 4th line
+esc :$ ==> to go to last line
+esc dd ==> to delete particular line in vi
+esc :set nu  ==> set line numbers
+esc :set nonu ==> remove line numbers
+
+CAT COMMAND
+
+cat vkm ==> to see the content of the file (ls - to see the content of directory)
+cat dir1/dir2/dir3/file1 ==> to see the content of a file inside the directory dir3
+cat file1;cat file2 ==> to see the content of multiple file
+cat -n file ==> to see the content of the file along with numbers
+cat * ==> to see the content of all the files
+tac ==> to see the content in reverse
+
+CHANGE DIRECTORY (cd)
+
+cd temp ==> enter into directory (change directory)
+cd .. ==> come out of directory (cd ../../.. ==> come out as many as directories)
+cd - ==> come to previous path ( acts like switch between two channels)
+
+COPY COMMAND
+cp f1 f2 ==> copy content of file1 to file2
+cp * destination path ==> it select all the files to be copied
+cp source destination (ex: cp temp1/temp2/temp3/file1 dir1/dir2/dir3/ ---- file1 will be copied to dir3)
+cp -r ( to copy multiple directory and files -r is used - it indicates recurssive) ex: cp -r dir1
+temp1/temp2/temp3/
+
+move command
+
+mv ==> to move or rename (it works like cut and paste) there is no source only destination is there.
+mv file1 file2 file3 dir1 ==> to move multiple files in dir1
+mv dir1/file . ==> to move the file to pwd . is used
+suppose we were in some other directory we want move a file from home to that directory
+we should use this command
+mv /home/ec2-user/filename . ==> file from home is moved to pwd
+* we dont have any -r command in move command.
+
+remove/delete command
+
+rm file1 ==> to remove/delete file
+rm -r dir1 dir2 ==> to remove/delete dir1 dir2
+rm –rf ==> to remove directories and subdirectories in arguement list
+rm file .file ==> to hide the file
+
+Chmod command ==> to change permissions of files or directories
+- indicates file
+d indicates directory
+rwx indicates read write execute (those are permissions)
+rwx|rwx|rwx indicates owner group and others permissons to read write and execute (here all permissions
+is given to all)
+chmod 777==> command used to give all permissions
+chmod -R 777 dir ==> to change the permissions of directory and the files present inside the directory
+chmod u+rwx g+rwx o+rwx filename ==> if we do not have access to see the permission of a file but still we
+need to change the permission
+chmod a+rwx ==> to grant permission for u g o
+
+FILE SIZE AND DISK SIZE
+
+du -sh ==> to check the file size (d-disk u-usage s-size h-human readable format)
+du -sh file1 file2 ==> to check the size of two files
+du -sh * ==> check size of all the files present in directory
+df -h ==> to check the size of disk (d-disk f=free)
+df -h . ==> shows the present disk size we are working
+free -h ==> system memory
+
+ECHO COMMAND
+
+--- used to display line of text or string that is passed as arguement
+echo "text to be displayed"
+==> these command is used to print on the screen
+echo "text to be printed" >> file ==> text which is to be printed will be saved in file
+echo -e "text to be printed \ntexted to be printed" ==> \n represents next line -- to do this -e command is
+used
+
+word count
+wc -l filename ==> it shows no of lines present in that file
+wc -w filename ==> it shows no of words present in that file
+wc -c filename ==> it shows no of words present in that file
+
+redirect command
+
+ls -lrt > file ==> output of ls -lrt will be stored in file (here content present in file will be overwritten)
+ls -lrt >> fil ==> content doesnt overwrite
+ls -lrt | tail -1 ==> to display recently modified file
+here | (pipe) works as output of one command will passed to a next command as input
+
+head and tail command
+
+head -4 file ==> to print first 4 line of a file
+tail -4 file ==> to print last 4 line of a file
+head -95 file | tail -1 ==> to print 94th line of a file
+head -5 file | tail -1 ; head -8 file | tail -1 ==> to print 5th and 8th line at a time.
+head -5 file | tail -1 | wc ==> to count how many lines words characters in 4th line of a file
+* to count only lines words and characters separately we use wc -l wc -w and wc -c commands after pipe
+
+Grep command
+grep -- global regular expression print
+this command searches for a regular pattern of characters and display all lines that contain the patterns
+
+grep "class" file ==> in which of the line 'class' word is present those lines are displayed
+grep -n "class" file ==> the line with word class(which we want to search/display) and along with particular
+line no will displayed
+grep -i ==> case sensitive free
+grep -e "word1" -e "word2" file ==> to search multiple words/strings and to diplay the lines that contains
+that word
+grep -w "linux" file ==> search only the word not the pattern (here only linux will be displayed and not the
+pattern of linux)
+ex: if linuxos is present it wouldnt search like other grep command
+grep "^i" ==> to print the line which is start with letter i
+grep -e "^i" -e "^w" -e "^h" file1 file2 ==> to print the multiple line starts with multiple characters with
+different files
+grep "i$" ==> to print the line which is ends with letter i
+grp –e “^s” –e “y$” filename ==> to print the line starts with s and ends with y
+
+grep “^d” && grep “y$” ==> to print all the lines starts with d and lines ends with y
+grep -R -l "linux" * ==> to search/list the word 'linux' present in which file
+grep -c "linux" filename ==> to count the no of linux word present in the file
+grep -c "^" file name ==> to count the no of lines present in the file
+grep -c "^$" filename ==> to count the no of empty lines present in the file
+grep -c -v "^$" file name ==> to count the no of non empty lines present in the file (^ starts with nothing $
+ends with nothing)
+grep -v "linux" filename ==> the lines without the word linux is printed
+grep -v "^$" filename ==> it will print only non empty lines
+
+sed command
+-- stream editor (without opening the file we can replace and delete the string and lines)
+
+sed 's/linux/windows/g' filename ==> here linux will replaced by windows but it only displays and not
+edited
+sed 's/linux/windows/Ig' file ==> I is used for case sensitive free
+sed 's/linux/windows/g' file1 > file2 ==> here linux will replaced by windows and the edited content will
+saved in file2
+sed 's/old line/new line/g' file1 ==> here old line is replaced by new line
+sed '1s/linux/windows/g' file ==> here linux will replaced by windows only in first line of the file but it
+doesnt print only that line
+sed '$s/linux/windows/g' file ==> here linux will replaced by windows only in last line of the file but it
+doesnt print only that line
+sed '1,6s/linux/windows/g' file ==> here linux will replaced by windows from 1st to 6th line --''-sed -i 's/linux/windows/g' filename ==> here the actual file is going edited and it wont display
+sed -n '4p' file ==> to print the 4th line of a file and it wont change the actual content of the file
+sed -n '$p' file ==> to print last line of a file
+sed -n '1,4p' file ==> to print first four lines (1 to 4)
+sed -n '1p;4p' file ==> to print only 1st and 4th line (1 and 4)
+sed '2d' file ==> to delete the 2nd line and it wont change the actual content of the file
+sed -i '2d' file ==> it delete the 2nd line and it changes the actual content of the file
+sed '$d' file ==> to delete last line of the file
+sed '1,4d' file ==> to delete first to fourth line of a file
+sed '1d;4d' file ==> to delete 1st and 4th line of a file
+sed '$a line to be inserted' file ==> extra line to be inserted will be printed at the end of the file
+sed '1a line to be inserted' file ==> extra line to be inserted will be printed after the first line of a file
+
+cut command
+
+cut -- command used for selecting a specific column of a file
+cut -d " " -f1 file ==> it will print the first column of a file (d - delimiter f1- field 1)
+cut -d " " -f1,3 file ==> it will print first and third column only
+cut -d " " -f1-3 file ==> it will print first three columns.
+limitations
+* it works only if no of characters of each column is same
+
+Awk command
+
+awk -- is a powerful command it can used to cut the file column wise and row wise, we can replace strings,
+we can search for strings and we can write script also.
+awk -F " " '{print $1}' file ==> it will print first column of a file (F - field separator)
+awk '{print $0}' file ==> it will print all the lines (all columns)
+awk '{print NR, $0}' file ==> it will print all the lines with line no
+awk '{print NR "-" $0}' file ==> it will print all the lines with line no along with awk -F " " '{print $1,$3}' file ==> it will print 1st and 3rd column of a file
+awk -F ":" '{print $1}' file ==> here : is field separator and we have only two fields one is left to the : and
+another right to the : -F is used to set the field separator
+if we have two : then there is three field separator
+awk -F " " '{print $NF}' file ==> it print last column of a file
+awk -F " " '{print $(NF-1)}' file ==> it print last second column of a file
+awk '{print $3,$NF}' file ==> it print 3rd and last word/column of all the line
+awk '/linux/ {print}' file ==> it will print the line which has word linux
+awk 'NR==1, NR==3 {print $0}' file ==> it will print first 3 rows along with all the column of a file
+
+find command
+find command -- used to search and locate the list of files and directories based on conditions you specify
+for files that match the arguments
+
+find . -name 'file' ==> find all the files whose name is file in a pwd
+find dir -name 'file' ==> find all the files whose name is file from a given dir
+find . -name 'v*' ==> find all the files whose name starts with v in a pwd
+find . -iname 'file' ==> find all the files that contains both capital and small letters (ignoring cases)
+find . -type f -name 'file' ==> -type f is used to find file specifically
+find . -type d -name 'file' ==> -type d is used to find directory specifically
+find . -mtime +50 ==> used to find all the files and directories which are modified 50days back
+find . -type f -mtime -50 ==> used to find only files which are modified within 50 days back
+* for exactly 50 days no signs
+find . -type d -mtime -2 ==> used to find only directories which modified within 2 days
+find . -mtime +50 -mtime -100 ==> used to find all the files and directories which are modified 50 days back
+and within 100 days.
+find . -mmin +10 ==> used to find all the files and directories which are modified 10 minutes back
+find . -newermt 2022-06-24 ==> to find all the files and directories which are modified on 20022-06-24
+m-modified c-changed a-accessed
+find . -perm 777 ==> used to find all the files and directories which has all the permissions
+find . -not -perm 777 ==> used to find all the files and directories which dont have permission 777
+similarlly we can use -type f and -type d to see the particular files and directories which has permissions
+find . -type f -empty ==> to find empty files (it will find recursively in all the directories)
+find . –type f ! –empty ==> to find non empty files
+find . -maxdepth 1 -type f -empty ==> maxdepth 1 means it will search only in pwd not go inside any
+directory
+
+similarlly maxdepth 2 it will go inside 2nd level directory, maxdepth 3 means inside 3rd level directory
+* we restrict automatic recursive by using maxdepth command and it can be used with any other options
+ex: to find files,dir,perm etc
+find . -type f ! -empty ==> to find non empty files
+find . -type f -empty | xargs rm ==> it will remove all empty files
+find . -size 50M ==> to find all 50mb files
+find . -size +50M -size -100M ==> to find all files greater than 50mb and lesser than 100mb
+(M-mb G-gb k-kb)
+find . -type f -name ".* ==> to find all hidden files
+find . -type f -name "filename" -exec rm -f {} \; ==> to find and remove file
+
+link command
+-- creating links between two files (acts as shortcut to a file)
+two types
+1)soft link- if you make any changes in the actual file, it will get reflected in the softlink.
+if you delete actual file, softlink will not work. here actual file and softlink file have different inode numbers
+here old file and new file have different permissions (we cannot chmod on new file and it will be as it is)
+if we rename the actual file soft link wont work
+ex: ln -s temp1/temp2/temp3/file1 link1 ==> the shortcut of path will be saved in link1 as a file
+(A hard link is a file all its own, and the file references or points to the exact spot on a hard drive where the
+Inode stores the data. A soft link isn't a separate file, it points to the name of the original file, rather than to
+a spot on the hard drive)
+Inode : store information about files and directories (folders), such as file ownership, access mode (read,
+write, execute permissions), and file type
+
+It indicates memory address for particular file
+2)hard link- if you make any changes in the actual file, it will get reflected in the hardlink
+if you delete actual file, hardlink will work. here actualfile and hardlink file have same inode numbers
+here old file and new file file have same permissions .
+even if we rename or delete the original file inode number of hardlink file wont be changed
+ex: ln temp1/temp2/temp3/file1 link2 ==> the shortcut of path will be saved in link2 as a file
+ls -i hardlink ==> it will display inode number (here both actual file and hardlink file have same inode
+number)
+
+ps -ef ==> it will list all the running process in the background
+ps ==> it will list all the running process in the foreground
+sleep 100 & ==> sleep process will be running only for 100sec
+ps -ef | grep "system" ==> it will list only sleep process
+kill -9 pid ==> to kill particular process by giving ppid of that process
+kill -9 12356 12545 12255 45855 ==> to kill multiple process by giving multiple pid
+pkill –9 –u “username” ==> to kill all the process run by certain user
+
+ps -aux ==> this command is also used list the running processs
+top ==> this shows which process taking highest memory usage/cpu in the top list
+ps -u "root" ==> list all the process started by root user
+ps -u "ec2-user' ==> list all the process started by ec2-user
+killall -name "process" ==> to kill the process by using name(it will kill the process wheater it is running or
+not)
+how to stop process gracefully (it will stop the running process and kill)
+sudo service name stop
+sudo service name start
+sudo service name restart
+ls -of ==> list all open files
+to install ls 0f ==> sudo yum install isof
+
+umask
+-- it is used to change the default permission of a system (it is already has all permission ie 777)
+it works as reverse of chmod command
+ex: if we want to set 777 has a default permission to all the files and directories
+777 - 777 = 000
+umask 000 command should be used
+umask 222 ==> to set default permission to 555 to all the files and directories ie r_xr_xr_x
+
+su and sudo
+su -- switch user or super user
+if we need to login as other user this command is used
+sudo -- super user does
+it is used to execute the command with the root permission
+suppose root user didnt access permission to allow instal softwere so if we use sudo with perticular
+command it allows root user permission
+ex: sudo yum install git (in linux)
+sudo apt-get install git (in ubuntu)
+sudo useradd ABC ==> to add ABC has a new user
+sudo passwd ABC ==> to set password to login to this user
+su - ABC ==> to login has ABC user (in pwd it will shows /home/ABC)
+exit ==> to logout from existing user
+sudo su - ==> to login has a root user
+steps to give sudo permissions to other new users (here root has given sudo permission to only ec2-user)
+*) log in has root user
+*) cd /etc/sudoers.d/ (etc - it has all system related files)
+*) ls - it will list 90-cloud-innit-users
+*) vi 90-cloud-innit-users
+*) give permissions to other user by giving user name all =(all) and no passwd=all
+
+ex: for giving permission for ABC same as ec2-user done by coping ec2-user line and change ec2-user by
+ABC
+vi /etc/sudoers ==> to add particular (services,softwere,locate,networking) permission by copying in that
+file
+
+more,less and sort
+more file ==> it is used to display content of a file pagewise
+less file ==> we can scroll up and down by using up arrow and down arrow to see the content of a file
+sort file ==> alphabets arranged in ascending order (it will only displays not edited)
+sort -r file ==> alphabets arranged in descending order
+cat file | sort | uniq ==> unique alphabets wont be displayed ( to remove duplicate entry)
+
+date command
+date +%d ==> to display date
+date +%m ==> to diplay month
+date +%y ==> to display year
+uname –a ==> complete details(version) of current linux
+who ==> it is used to check which are all the users logged into the system
+whoami ==> it shows the username
+hostname ==> displays ip address
+
+ssh -- secure shell
+i need to login from one server to another server this command is used
+ssh -i .pem user@serverip ==> login to other server (here ec2-user and ip address are the username and ip
+addrees of other server)
+ex: ssh -i my.lunux.pem ec2-user@101.235.25.100 (server ip used here is private)
+exit ==> command it used to logout from other server
+* it uses port 22
+pem - linux to linux
+ppk - windows to linux
+steps to copy .pem key
+*) install winscp application
+*) provide host name,username and ppk key [host name(public) and username ppk key should be server1]
+*) log in
+*) windows and linux separate machines will diplayed
+*) copy pem key from windows machine to linux machine by draging
+*) log in to server1 using putty and type ls command .pem key will be in the list
+*) permissions of pem key should be changed to 400 using chmod 400 .pem
+
+scp -- secure copy protocol
+i need copy file from one server to another server this command is used
+scp -i .pem file user@server:/home/ec2user/ ==> file from server1 is copied to server2
+scp -i .pem -r temp user@server:/home/ec2user ==> directory temp is copied from server1 is copied to
+server2
+
+.bashrc
+whenever we login to system we should run certain commands we use .bashrc
+.bashrc ==> it is a auto excuted file which gets execute automatically whenever we login to the system
+ex: vi .bashrc
+echo "how r u"
+umask 000
+ls -lrt
+:wq!
+suppose when we run this and we login again to the system echo umusk and ls -lrt will be executed
+automatically
+
+password less connection
+we can connect to the other server without using the key
+steps
+*) ssh-keygen -t rsa type this command in server1 (keep pressing enter till key is generated)
+*) you will display that : public key will be saved in /home/ec2-user/.ssh/id_rsa.pub
+*) cat /home/ec2-user/.ssh/id_rsa.pub
+*) copy the whole key
+*) go to the server2 and list all the hidden files by using ls -a you will find .ssh
+*) cd .ssh and ls you will get authorized_keys
+*) vi authorized_keys paste the key which is copied from server1
+*) go to server1 and type command ssh ec2-user@privateip(server2) you will login to other server2
+suppose we should login to server3 without getting connection lost with server2
+*) dont run keygen command again because it will cut connection with server2 due to overwrite of existing
+key and new key will be generated
+*) instead we should use the command cd .ssh and ls
+*) cat id_rsa.pub the key will display and copy dat key
+*) in server3 same procedure we should repeat
+*) now go to server1 and type command ssh ec2-user@privateip(server3) you will login to server3
+
+ping -- to check wheather the server is upend running or shutdown/running or not
+ex: ping ipaddress/servername
+
+telnet -- allows a user of one computer to login to another computer that is the part of same network
+
+(remote connection with a system over tcp/ip network by clearing the security and to grant permission to
+access the server)
+ex: telnet ipaddress/servername
+username:
+password:
+it shows authentication success it means we are clearing the security
+it uses port 23
+
+port -- it acts as a endpoint of communication to identify a given application or process on a linux os
+it is a number that identifies one side of connection between two systems.
+port 23 ==> to provide remote access from one server to another or veriety of communications system
+port 22 ==> it is the default port for ssh (secure shell terminal)
+port 80 ==> it is the default port for web traffic (HTTP)
+port 8080 ==> it is the alternative for HTTP traffic
+port 443 ==> it is the default for HTTPS traffic
+port 8443 ==> it is the alternative for HTTPS traffic
+port 53 ==> domain name server (DNS) used for associating domain name to ip address and viceversa
+port 25 ==> simple mail transfer protocol (SMTP) used to email from shell script
+
+rsync command
+rsync -- for copying files and directories between local and remote system
+it is used has alternative for scp but it works slow compare to scp because its searches the
+existing files and compare and get copied
+how does rsync works
+*while copying data from one server to another, if copy is stopped in between due to network issue. if we
+use scp command,
+it will start copying from begining. If we use rsync command, it will start copying from where it was
+stopped
+(because it will compare and copy and it's slower than scp)
+*suppose in server1 temp1 directory has 10 files and in server2 same directory has 5 files we should copy
+temp1 from server1 to 2
+here remaining 5 files from server1 is copied to server2
+ex: rsync /home/ec2-user/temp1 ec2-user@pvtipserver2:/home/ec2-user/temp1
+
+netstat -- to check the available ports in the system
+sudo yum instal netstat or
+sudo yum instal net-tools
+*)how to check available ports on system
+sudo netstat -tulpn | grep LISTEN
+*)how do you check port is busy
+netstat -anp/find ":portnumber"
+
+*)how do you list used ports
+sudo netstat -tunlp
+
+tee command
+-- the command is used to write and display the content of the file
+ex: ls -lrt | tee file1 ==> output of ls -lrt will copied to file1 and copied content will be displayed
+tee -a
+-- the command is used to append the content and display the content of the file
+ex: ls -lrt | tee -a file1 ==> output of ls -lrt and content in the file1 both are saved (it will not overwrite)
+it is used instead of >> this
+
+wget command
+-- to download file or to install software to linux server from browser using url
+ex: sudo wget url
+
+curl command
+-- to download and update the files/software
+Chown command
+-- to change the ownership of the file
+chown newowner username file1
+ex: chown ABC file1
+(here abc – user name )
+to check use ls –l command here in the owner name ABC will present
+htop command
+these command is used to check the high cpu storage and memory. In these command we can scrollup and
+down
+htop –U “username” ==> these commands is used to check the process which is taking high cpu storage
+and memory run by certain user
+
+qa questions
+how to check from how many days server is running?
+Uptime
+Difference between .bashrc & .bash –profile?
+.bashrc executes command in login shell
+.bash-profile execute command in nonlogin shell
+What is load average?
+Load average is average system load in linux server for a defined period of time.
+What is the default permission for file?
+664
+
+What is the default permission for directory?
+775
+How will extract tar file?
+tar -xvf filename.tar
+how will we create tar file?
+tar –zcvf file.tar.gz /home/ec2-user
+
+

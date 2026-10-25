@@ -1,0 +1,110 @@
+pipeline 1(echo hello)
+
+pipeline {
+    agent any
+    stages {
+        stage(stage1) {
+            steps {
+                echo 'hello world!..'
+            }
+        }
+    }
+}
+
+
+
+
+pipeline 2(build,test and deploy)
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+pipeline3(location and build date)
+
+pipeline {
+    
+  agent any
+  stages {
+      stage('Build') {
+          steps {
+           sh 'date'
+           sh 'pwd'
+          }
+      }
+      stage('Test') {
+          steps {
+              echo 'Testing..'
+          }
+      }
+      stage('Deploy') {
+           steps {
+               echo 'Deploying....' 
+           }
+      }
+  }
+}
+
+pipe line 4(calender)
+
+pipeline {
+  agent any
+  stages {
+      stage('Stage 1'){
+          steps {
+              sh '''
+              ls
+              date
+              cal 2025
+              '''
+          }
+      }
+  }
+}
+
+pipeline 6(got error plz work on it)
+pipeline {
+   agent any
+   environment {
+       PATH="/opt/maven/bin:$PATH"
+   }
+   stages {
+       stage('git clone') {
+           steps {
+              git url: "https://github.com/somu123456789/war-web-project.git", branch:'master'
+           }
+       }
+       stage('build'){
+          steps {
+            sh 'mvn clean install'
+          }
+       }
+   }
+}
+
